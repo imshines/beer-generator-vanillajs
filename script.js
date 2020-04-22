@@ -8,7 +8,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const reloadBtn = document.getElementById('btn');
 
     let url = "https://api.punkapi.com/v2/beers/random";
-    fetch(url)
+
+    reloadBtn.addEventListener('click', () => {
+        fetch(url)
         .then(response => {
             return response.json();
         })
@@ -25,9 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
             beerDate.innerHTML = first_brewed;
             beerImage.src = image;
         })
-
-    reloadBtn.addEventListener('click', () => {
-        window.location.reload();
     })
 
 
