@@ -9,25 +9,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let url = "https://api.punkapi.com/v2/beers/random";
 
-    reloadBtn.addEventListener('click', () => {
+    function ajax() {
         fetch(url)
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            const name = data[0].name;
-            const tagline = data[0].tagline;
-            const first_brewed = data[0].first_brewed;
-            const description = data[0].description;
-            const image = data[0].image_url;
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                const name = data[0].name;
+                const tagline = data[0].tagline;
+                const first_brewed = data[0].first_brewed;
+                const description = data[0].description;
+                const image = data[0].image_url;
 
-            beerTitle.innerHTML = name;
-            beerTagline.innerHTML = tagline;
-            beerDescription.innerHTML = description;
-            beerDate.innerHTML = first_brewed;
-            beerImage.src = image;
-        })
-    })
+                beerTitle.innerHTML = name;
+                beerTagline.innerHTML = tagline;
+                beerDescription.innerHTML = description;
+                beerDate.innerHTML = first_brewed;
+                beerImage.src = image;
+            })
+    }
 
+    ajax()
+
+    reloadBtn.addEventListener('click', ajax);
 
 })
